@@ -1,0 +1,48 @@
+<%
+provisioner = ENV['KITCHEN_PROVISIONER'] || 'chef_solo'
+omnibus_version = ENV['KITCHEN_OMNIBUS_VER'] || 'true'
+driver = ENV['KITCHEN_DRIVER'] || docker
+%>
+---
+driver:
+  name: <%= driver %>
+
+provisioner:
+  name: <%= provisioner %>
+
+<% if driver == 'digitalocean' %>
+driver_config:
+  digitalocean_client_id: <%= ENV['DIGITALOCEAN_CLIENT_ID'] %>
+  digitalocean_access_token: <%= ENV['DIGITALOCEAN_ACCESS_TOKEN'] %>
+  region: nyc1
+  ssh_key_ids: <%= ENV['DIGITALOCEAN_SSH_KEY_IDS'] %>
+  ssh_key: <%= ENV['DIGITALOCEAN_SSH_KEY'] %>
+  size: 512mb
+  private_networking: true
+<% end %>
+
+platforms:
+<% if driver == 'docker' %>
+  - name: centos5
+    driver_config:
+      image: centos:centos5
+      platform: centos
+      provision_command:
+        echo 'Defaults !requiretty' >> /etc/sudoers;
+  - name: centos6
+    driver_config:
+      image: centos:centos6
+      platform: centos
+      provision_command:
+        echo 'Defaults !requiretty' >> /etc/sudoers;
+<% elsif driver == 'digitalocean' %>
+  - name: ubuntu-14.04
+    driver_config:
+      image: ubuntu-14-04-x64
+<% end %>
+
+suites:
+  - name: default
+    run_list:
+      - recipe[consul_alerts_test::default]
+    attributes:
