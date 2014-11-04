@@ -1,0 +1,9 @@
+site 'https://supermarket.getchef.com/api/v1'
+
+cookbook 'consul_alerts_test',
+         path: './test/cookbooks/consul_alerts_test'
+
+cookbook 'consul_alerts',
+         path: './'
+
+cookbook 'minitest-handler', '>= 1.3.2'

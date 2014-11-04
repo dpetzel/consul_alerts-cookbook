@@ -1,7 +1,15 @@
 language: ruby
 rvm:
   - 1.9.3
+env:
+  - CI_REPORTS=shippable/testresults COVERAGE_REPORTS=shippable/codecoverage
+install:
+  - curl -L https://www.opscode.com/chef/install.sh | sudo bash -s -- -P chefdk
+  - chef exec bundle install
+  - chef exec bundle exec berks install
 script:
-  bundle exec rubocop -D
-  bundle exec foodcritic -G .
-  bundle exec rspec
+  - chef exec bundle exec rubocop .
+  - chef exec bundle exec foodcritic -G .
+  - chef exec bundle exec rubocop .
+  - chef exec bundle exec rspec --format RspecJunitFormatter --out shippable/testresults/rspec.xml
+

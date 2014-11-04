@@ -2,6 +2,8 @@
 This cookbook provides an LWRP as well as a sample recipe for managing
 [consul-alerts](https://github.com/AcalephStorage/consul-alerts)
 
+[![Build Status](https://api.shippable.com/projects/54597b1aa85d45d063d9033a/badge?branchName=master)](https://app.shippable.com/projects/54597b1aa85d45d063d9033a/builds/latest)
+
 ## Requirements
 * Chef 11+
 * A working [Consul](https://consul.io/) installation

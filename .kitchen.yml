@@ -1,7 +1,7 @@
 <%
 provisioner = ENV['KITCHEN_PROVISIONER'] || 'chef_solo'
 omnibus_version = ENV['KITCHEN_OMNIBUS_VER'] || 'true'
-driver = ENV['KITCHEN_DRIVER'] || docker
+driver = ENV['KITCHEN_DRIVER'] || 'docker'
 %>
 ---
 driver:
@@ -36,9 +36,9 @@ platforms:
       provision_command:
         echo 'Defaults !requiretty' >> /etc/sudoers;
 <% elsif driver == 'digitalocean' %>
-  - name: ubuntu-14.04
+  - name: ubuntu-12.04
     driver_config:
-      image: ubuntu-14-04-x64
+      image: ubuntu-12-04-x64
 <% end %>
 
 suites:
