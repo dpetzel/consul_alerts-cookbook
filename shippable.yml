@@ -14,6 +14,5 @@ script:
   - chef exec bundle exec rubocop .
   - chef exec bundle exec foodcritic -G .
   - chef exec bundle exec rubocop .
-  - sudo chef gem install rspec_junit_formatter
   - chef exec bundle exec rspec --format RspecJunitFormatter --out shippable/testresults/rspec.xml
 
