@@ -1,9 +1,10 @@
 language: ruby
 rvm:
   - 1.9.3
-script:
+install:
   - curl -L https://www.opscode.com/chef/install.sh | sudo bash -s -- -P chefdk
-  - chef gem install kitchen-docker
+  - sudo chef gem install kitchen-docker
+script:
   - kitchen --list
   # - bundle exec librarian-chef config path ../tmp/cookbooks --local
   # - bundle exec librarian-chef config tmp ../tmp --local
