@@ -4,7 +4,6 @@ rvm:
 env:
   - CI_REPORTS=shippable/testresults COVERAGE_REPORTS=shippable/codecoverage
 install:
-  - sudo apt-get install libxslt-dev libxml2-dev
   - curl -L https://www.opscode.com/chef/install.sh | sudo bash -s -- -P chefdk
   - chef exec bundle install
   - chef exec bundle exec berks install
