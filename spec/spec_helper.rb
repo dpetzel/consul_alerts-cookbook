@@ -1,7 +1,7 @@
 require 'chefspec'
 require 'chefspec/berkshelf'
-require 'coveralls'
-Coveralls.wear!
+# require 'coveralls'
+# Coveralls.wear!
 
 ChefSpec::Coverage.start!
 
