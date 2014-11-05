@@ -8,12 +8,12 @@ install:
   # http://stackoverflow.com/questions/25077685/docker-container-failing-to-start-on-boot
   - sleep 10
   - curl -L https://www.opscode.com/chef/install.sh | sudo bash -s -- -P chefdk
-  - sudo chef gem install kitchen-docker
   - chef exec bundle install
+  - chef exec bundle exec berks install
 script:
   - chef exec bundle exec rubocop .
   - chef exec bundle exec foodcritic -G .
   - chef exec bundle exec rubocop .
-  - chef exec bundle exec berks install
-  - chef exec bundle exec rspec
+  - chef gem install rspec_junit_formatter
+  - chef exec bundle exec rspec --format RspecJunitFormatter --out shippable/testresults/rspec.xml
 
