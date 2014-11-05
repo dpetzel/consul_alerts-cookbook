@@ -1,6 +1,8 @@
 language: ruby
 rvm:
   - 1.9.3
+env:
+  - CI_REPORTS=shippable/testresults COVERAGE_REPORTS=shippable/codecoverage
 install:
   - curl -sSL https://get.docker.com/ubuntu/ | sudo sh
   - sudo service docker start
