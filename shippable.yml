@@ -14,9 +14,6 @@ script:
   - chef exec bundle exec rubocop .
   - chef exec bundle exec foodcritic -G .
   - chef exec bundle exec rubocop .
-  - chef exec bundle exec librarian-chef config path ../tmp/cookbooks --local
-  - chef exec bundle exec librarian-chef config tmp ../tmp --local
-  - chef exec bundle exec librarian-chef install
+  - chef exec bundle exec berks install
   - chef exec bundle exec rspec
-  - kitchen test
 
