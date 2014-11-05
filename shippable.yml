@@ -4,8 +4,8 @@ rvm:
 install:
   - curl -L https://www.opscode.com/chef/install.sh | sudo bash -s -- -P chefdk
   - sudo chef gem install kitchen-docker
-script:
-  - "kitchen --list"
+script: |
+  "kitchen --list"
   # - bundle exec librarian-chef config path ../tmp/cookbooks --local
   # - bundle exec librarian-chef config tmp ../tmp --local
   # - bundle exec librarian-chef install
