@@ -3,6 +3,9 @@ rvm:
   - 1.9.3
 install:
   - curl -sSL https://get.docker.com/ubuntu/ | sudo sh
+  - sudo service docker start
+  # http://stackoverflow.com/questions/25077685/docker-container-failing-to-start-on-boot
+  - sleep 10
   - curl -L https://www.opscode.com/chef/install.sh | sudo bash -s -- -P chefdk
   - sudo chef gem install kitchen-docker
   - chef exec bundle install
