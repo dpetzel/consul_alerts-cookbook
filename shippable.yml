@@ -2,6 +2,8 @@ language: ruby
 rvm:
   - 1.9.3
 script:
-  bundle exec rubocop -D
-  bundle exec foodcritic -G .
-  bundle exec rspec
+  - bundle exec librarian-chef config path ../tmp/cookbooks --local
+  - bundle exec librarian-chef install
+  - bundle exec rubocop -D
+  - bundle exec foodcritic -G .
+  - bundle exec rspec

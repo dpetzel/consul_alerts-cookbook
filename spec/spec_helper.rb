@@ -1,5 +1,5 @@
 require 'chefspec'
-require 'chefspec/berkshelf'
+require 'chefspec/librarian'
 ChefSpec::Coverage.start!
 
 RSpec.configure do |config|
