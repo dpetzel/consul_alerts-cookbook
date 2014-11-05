@@ -2,9 +2,12 @@ language: ruby
 rvm:
   - 1.9.3
 script:
-  - bundle exec librarian-chef config path ../tmp/cookbooks --local
-  - bundle exec librarian-chef config tmp ../tmp --local
-  - bundle exec librarian-chef install
-  - bundle exec rubocop -D
-  - bundle exec foodcritic -G .
-  - bundle exec rspec
+  - curl -L https://www.opscode.com/chef/install.sh | sudo bash -s -- -P chefdk
+  - chef gem install kitchen-docker
+  - kitchen --list
+  # - bundle exec librarian-chef config path ../tmp/cookbooks --local
+  # - bundle exec librarian-chef config tmp ../tmp --local
+  # - bundle exec librarian-chef install
+  # - bundle exec rubocop -D
+  # - bundle exec foodcritic -G .
+  # - bundle exec rspec
