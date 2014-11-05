@@ -91,7 +91,7 @@ def configure_service(action = :create)  # rubocop:disable Metrics/AbcSize
     log_what :std_all
     exec_args [
       'start',
-      "--alert-addr=localhost:#{new_resource.port}",
+      "--alert-addr=#{new_resource.bind_addr}:#{new_resource.port}",
       "--consul-addr=#{new_resource.consul_addr}",
       "--consul-dc=#{new_resource.consul_dc}"
     ]

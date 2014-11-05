@@ -34,6 +34,10 @@ attribute :port,
           kind_of: Fixnum,
           default: 9000
 
+attribute :bind_addr,
+          kind_of: String,
+          default: '0.0.0.0'
+
 attribute :base_url,
           kind_of: String,
           default: 'http://dl.bintray.com/darkcrux/generic'
