@@ -5,5 +5,5 @@ install:
   - curl -L https://www.opscode.com/chef/install.sh | sudo bash -s -- -P chefdk
   - sudo chef gem install kitchen-docker
 script:
-  - kitchen \-\-list
+  - kitchen list
 
