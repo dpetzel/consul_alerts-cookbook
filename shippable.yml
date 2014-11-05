@@ -2,6 +2,7 @@ language: ruby
 rvm:
   - 1.9.3
 install:
+  - sudo apt-get install lxc-docker
   - curl -L https://www.opscode.com/chef/install.sh | sudo bash -s -- -P chefdk
   - sudo chef gem install kitchen-docker
 script:
