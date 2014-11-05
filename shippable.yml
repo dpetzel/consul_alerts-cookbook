@@ -5,9 +5,8 @@ install:
   - curl -sSL https://get.docker.com/ubuntu/ | sudo sh
   - curl -L https://www.opscode.com/chef/install.sh | sudo bash -s -- -P chefdk
   - sudo chef gem install kitchen-docker
-  - export PATH=/opt/chefdk/embedded/bin/:$PATH
-  - which bundle
-  - bundle install
+  - chef exec bundle install
+  - chef exec bundle exec rubocop .
 script:
   - kitchen list
 
