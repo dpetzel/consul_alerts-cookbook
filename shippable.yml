@@ -4,7 +4,7 @@ rvm:
 env:
   global:
     - secure: lgUSh9DujusqdXq/N35qzHi25/vY3JRaLjsj8hzPFIiopOvQ6TUz2uPtxndeQu2/Hmy7EmK5Zj8l3zfqe73bSnWxMSoRoz4JGW/Ez4VS6f6U9WxkgfSN4ACVD6TywtATX2DcDZ3AOEnkSLIjDepDtavPCkQ6zvgc5EOUfdI5pkoDsUB2tHWhVXYmFDeZ7yaYyZLj3PfQWhdEkAaTQ6iNvUSyXiTk3XTF1Ysoo1aV3CnoW15dZxrBDniXK+y/7JUAdIugp6Rd3AX8B6i6dZlqvtOipDYHvtA/zwtP5huu40UoiFxFcH/Q5q3BlbA8f4C87pCoA/7UM7nhaaVcP+2R8Q==
-    - "CI_REPORTS=shippable/testresults COVERAGE_REPORTS=shippable/codecoverage COVERALLS_SERVICE_NAME=shippable CI_NAME=shippable CI_BUILD_NUMBER=${BUILD_NUMBER} CI_BUILD_URL=${BUILD_URL} CI_BRANCH=${BRANCH}"
+    - "CI_REPORTS=shippable/testresults COVERAGE_REPORTS=shippable/codecoverage CI_NAME=shippable CI_BUILD_NUMBER=${BUILD_NUMBER} CI_BUILD_URL=${BUILD_URL} CI_BRANCH=${BRANCH}"
 
 install:
   - curl -L https://www.opscode.com/chef/install.sh | sudo bash -s -- -P chefdk
