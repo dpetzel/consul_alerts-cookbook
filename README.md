@@ -3,6 +3,7 @@ This cookbook provides an LWRP as well as a sample recipe for managing
 [consul-alerts](https://github.com/AcalephStorage/consul-alerts)
 
 [![Build Status](https://api.shippable.com/projects/54597b1aa85d45d063d9033a/badge?branchName=master)](https://app.shippable.com/projects/54597b1aa85d45d063d9033a/builds/latest)
+[![Coverage Status](https://coveralls.io/repos/dpetzel/consul_alerts-cookbook/badge.png)](https://coveralls.io/r/dpetzel/consul_alerts-cookbook)
 
 ## Requirements
 * Chef 11+
@@ -14,7 +15,7 @@ It is likely it runs on other platform combinations as well, but only those
 that are regularly tested on will be declared *supported*:
 
 * EL6 (tested using Centos)
-* Ubuntu 14.04
+* EL5 (tested using Centos)
 
 ## Usage
 The simplest way to get started is to add `recipe[consul-alerts]` to a node's
@@ -51,6 +52,8 @@ the `consul-alerts` daemon
     * Default: localhost:8500
 * `consul_dc` - The consul datacenter to use
     * Default: dc1
+* `bind_addr` - The bind address on which the daemon will listen
+    * Default: 0.0.0.0
 * `port` - The TCP port on which the daemon will listen
     * Default: 9000
 * `base_url` - The base URL from which `consul-alerts` can be downloaded
