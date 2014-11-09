@@ -44,4 +44,17 @@ describe 'consul_alerts::default' do
   it 'extracts the tarball' do
     expect(chef_run).to run_execute('untar_consul-alerts')
   end
+
+  it 'sets configuration data into the key/value store' do
+    expect(chef_run).to create_consul_kv(
+      'checks/enabled').with(value: 'true')
+    expect(chef_run).to create_consul_kv(
+      'checks/change-threshold').with(value: '60')
+    expect(chef_run).to create_consul_kv(
+      'events/enabled').with(value: 'true')
+    expect(chef_run).to create_consul_kv(
+      'notifiers/log/enabled').with(value: 'true')
+    expect(chef_run).to create_consul_kv(
+      'notifiers/log/path').with(value: '/var/log/consul-notifications.log')
+  end
 end
