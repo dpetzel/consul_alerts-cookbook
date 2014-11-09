@@ -6,6 +6,12 @@ driver = ENV['KITCHEN_DRIVER'] || 'docker'
 ---
 driver:
   name: <%= driver %>
+<% if driver == 'docker' %>
+  forward:
+  # Forward the HTTP port so you can browse the KV
+  - 8500:8500
+<% end %>
+
 
 provisioner:
   name: <%= provisioner %>
@@ -46,3 +52,6 @@ suites:
     run_list:
       - recipe[consul_alerts_test::default]
     attributes:
+      consul:
+        serve_ui: true
+        client_addr: 0.0.0.0

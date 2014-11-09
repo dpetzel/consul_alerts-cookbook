@@ -56,6 +56,17 @@ action :create do
 
   configure_service
 
+  # Populate the key/value store with the configuration data
+  new_resource.config.each_pair do |key, value|
+    path = config_key_path(key)
+    consul_kv key do
+      action :create
+      value value
+      path path
+      consul_addr new_resource.consul_addr
+    end
+  end
+
 end
 
 action :remove do
@@ -64,6 +75,16 @@ action :remove do
   directory new_resource.install_dir do
     action :delete
     recursive true
+  end
+
+  # Populate the key/value store with the configuration data
+  new_resource.config.keys do |key|
+    path = config_key_path(key)
+    consul_kv key do
+      action :delete
+      path path
+      consul_addr new_resource.consul_addr
+    end
   end
 end
 
@@ -97,4 +118,15 @@ def configure_service(action = :create)  # rubocop:disable Metrics/AbcSize
     ]
   end
   new_resource.updated_by_last_action(svc.updated_by_last_action?)
+end
+
+private
+
+# Return the full key path for a configuration entry in the k/v store
+# simply prepends `consul-alerts/config` to the partial path supplied
+#
+# @param [String] The partial path relative to `consul-alerts/config` at which
+#   the configuration key will be created
+def config_key_path(partial_path)
+  "consul-alerts/config/#{partial_path}"
 end

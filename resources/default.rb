@@ -24,7 +24,7 @@ attribute :service_name,
 
 attribute :consul_addr,
           kind_of: String,
-          default: 'localhost:8500'
+          default: '127.0.0.1:8500'
 
 attribute :consul_dc,
           kind_of: String,
@@ -57,6 +57,15 @@ attribute :checksums,
               '4e3e697ead0509d04fb43e5056692bab8d037f706ad682e64aba8083dcabdec4',
             'consul-alerts-0.1.1-linux-amd64.tar' =>
               'c6a4a39f4c17770bd2d9b552e0baad07fe8c8a7d153ec29efcad41b595210a62'
+          }
+attribute :config,
+          kind_of: Hash,
+          default: {
+            'checks/enabled' => 'true',
+            'checks/change-threshold' => '60',
+            'events/enabled' => 'true',
+            'notifiers/log/enabled' => 'true',
+            'notifiers/log/path' => '/var/log/consul-notifications.log'
           }
 
 attr_accessor :tarfile_url, :tarfile_name
