@@ -4,7 +4,7 @@ maintainer_email 'davidpetzel@gmail.com'
 license 'apache2'
 description 'Installs/Configures consul-alerts'
 long_description 'Installs/Configures consul-alerts'
-version '1.0.0'
+version '1.0.1'
 
 depends 'service_factory', '~> 0.1.4'
 depends 'consul_kv', '~> 1.0.0'

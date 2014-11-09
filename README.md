@@ -116,11 +116,11 @@ the `consul-alerts` daemon
       Consul Key/Value store.
     </td>
     <td><tt>
-      'checks/enabled' => 'true',
-      'checks/change-threshold' => '60',
-      'events/enabled' => 'true',
-      'notifiers/log/enabled' => 'true',
-      'notifiers/log/path' => '/var/log/consul-notifications.log'    
+      'checks/enabled' => 'true', <br />
+      'checks/change-threshold' => '60', <br />
+      'events/enabled' => 'true', <br />
+      'notifiers/log/enabled' => 'true', <br />
+      'notifiers/log/path' => '/var/log/consul-notifications.log' <br /> 
     </tt></td>
   </tr>
 </table>
